@@ -102,7 +102,13 @@ public class PurchasePage extends BasePage {
 
         clickElement(purchaseFlightButton);
     }
+    public boolean isNameFieldEmpty() {
 
+        String value =
+                nameField.getAttribute("value");
+
+        return value.isEmpty();
+    }
     public void completePurchase(
             String name,
             String address,
