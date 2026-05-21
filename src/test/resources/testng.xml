@@ -4,9 +4,11 @@
 
 <suite name="FlightBook Suite">
 
-    <test name="Flight Booking Tests">
+    <test name="Flight Search Tests">
 
         <classes>
+
+            <class name="tests.FlightSearchTest"/>
 
         </classes>
 
