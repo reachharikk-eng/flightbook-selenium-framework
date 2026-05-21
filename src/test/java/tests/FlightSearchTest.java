@@ -1,5 +1,5 @@
 package tests;
-
+import dataproviders.FlightDataProvider;
 import base.BaseTest;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -199,5 +199,26 @@ public class FlightSearchTest extends BaseTest {
         Assert.assertTrue(
                 currentUrl.contains("confirmation"),
                 "Purchase confirmation page not loaded");
+    }
+    @Test( priority = 7, dataProvider = "flightSearchData",
+            dataProviderClass = FlightDataProvider.class)
+
+    public void verifyMultipleRouteSearch(
+            String departure,
+            String destination) {
+
+        HomePage homePage =
+                new HomePage(driver);
+
+        homePage.searchFlight(
+                departure,
+                destination);
+
+        FlightListPage flightListPage =
+                new FlightListPage(driver);
+
+        Assert.assertTrue(
+                flightListPage.getFlightCount() > 0,
+                "No flights found");
     }
 }
